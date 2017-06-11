@@ -31,19 +31,17 @@ public class ToolbarManager {
      * @param FALG
      */
     public ToolbarManager initToolbar(int FALG){
-        FALG=FALG|ALL_NULL;
-        String mFlag=Integer.toBinaryString(FALG);
-        String flagS[]=mFlag.trim().split("");
-        if(flagS[5].equals("1"))
+        if((FALG&RIGHT_TEXT)!=0)
             toolbar.findViewById(R.id.toolbar_right_text).setVisibility(View.VISIBLE);
-        if(flagS[4].equals("1"))
+        if((FALG&LEFT_TEXT_TWO)!=0)
             toolbar.findViewById(R.id.toolbar_left_text_two).setVisibility(View.VISIBLE);
-        if(flagS[3].equals("1"))
+        if((FALG&RIGHT_IMAGE_ONE)!=0)
             toolbar.findViewById(R.id.toolbar_right_btn_one).setVisibility(View.VISIBLE);
-        if(flagS[2].equals("1"))
+        if((FALG&RIGHT_IMAGE_TWO)!=0)
             toolbar.findViewById(R.id.toolbar_right_btn_two).setVisibility(View.VISIBLE);
-        if(flagS[1].equals("1"))
+        if((FALG&LEFT_TEXT_ONE)!=0)
             toolbar.findViewById(R.id.toolbar_left_text_one).setVisibility(View.VISIBLE);
+
         return this;
     }
 
@@ -71,6 +69,12 @@ public class ToolbarManager {
         return this;
     }
 
+    /**
+     * 设置第一张图
+     * @param context
+     * @param r
+     * @return
+     */
     public ToolbarManager setRightImageOne( Context context,int r){
         ImageView view= (ImageView) toolbar.findViewById(R.id.toolbar_right_btn_one);
         view.setImageDrawable(context.getResources().getDrawable(r));
